@@ -29,7 +29,7 @@ WORKDIR /app
  
 # Copy the JAR file from the builder stage
 
-COPY --from=builder /app/target/my-app.jar .
+COPY --from=builder *.jar .
  
 # Expose the port that the application will run on
 
