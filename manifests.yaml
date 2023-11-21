@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-springboot-app
-        image: mana007.azurecr.io/hello:${BUILD_NUMBER)
+        image: mana007.azurecr.io/hello:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
