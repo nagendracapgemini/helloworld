@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: HW-deployment
+  name: hw-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: HW-app
+      app: hw-app
   template:
     metadata:
       labels:
-        app: HW-app
+        app: hw-app
     spec:
       containers:
-      - name: my-HW-app
+      - name: my-hw-app
         image: mana007.azurecr.io/hello:latest
         imagePullPolicy: Always
         ports:
@@ -24,9 +24,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: HW-app
-    k8s-app: HW-app
-  name: HW-app
+    app: hw-app
+    k8s-app: hw-app
+  name: hw-app
 spec:
   ports:
   - name: http
@@ -35,4 +35,4 @@ spec:
     targetPort: 8080
   type: LoadBalancer
   selector:
-    app: HW-app
+    app: hw-app
