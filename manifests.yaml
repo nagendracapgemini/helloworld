@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: HW-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: HW-app
+  template:
+    metadata:
+      labels:
+        app: HW-app
+    spec:
+      containers:
+      - name: my-HW-app
+        image: mana007.azurecr.io/hello:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: HW-app
+    k8s-app: HW-app
+  name: HW-app
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: HW-app
